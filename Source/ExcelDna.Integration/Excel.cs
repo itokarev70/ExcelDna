@@ -70,11 +70,6 @@ namespace ExcelDna.Integration
             }
         }
 
-        public static int MainManagedThreadId
-        {
-            get { return _mainManagedThreadId; }
-        }
-
         #region Get Window Handle
         // NOTE: Careful not to call ExcelVersion here - might recurse causing StackOverflow
 
