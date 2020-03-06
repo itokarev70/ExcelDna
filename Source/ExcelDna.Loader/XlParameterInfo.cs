@@ -112,9 +112,9 @@ namespace ExcelDna.Loader
 
         public void SetTypeInfo(Type type, bool isReturnType, bool isExceptionSafe)
         {
-#if DEBUG
-                SetTypeInfo4(type, isReturnType, isExceptionSafe);
-#else
+//#if DEBUG
+//                SetTypeInfo4(type, isReturnType, isExceptionSafe);
+//#else
             if (XlAddIn.XlCallVersion < 12)
             {
                 SetTypeInfo4(type, isReturnType, isExceptionSafe);
@@ -123,7 +123,7 @@ namespace ExcelDna.Loader
             {
                 SetTypeInfo12(type, isReturnType, isExceptionSafe);
             }
-#endif
+//#endif
         }
 
         private void SetTypeInfo4(Type type, bool isReturnType, bool isExceptionSafe)
@@ -681,6 +681,15 @@ namespace ExcelDna.Loader
                 XlType = "X"; // Async Handle in XLOPER12's BigData
                 MarshalAsAttribute = GetMarshalAsAttribute(typeof(XlAsyncHandleParameter12Marshaler));
                 DelegateParamType = typeof(object);
+            }
+            else if (type == typeof(XlOper12*))
+            {
+                // Internal use only - the memory management rules are a mess to support generally
+                // Direct pointer passthrough, no marshalling
+                if (AllowReference)
+                    XlType = "U"; // XLOPER
+                else
+                    XlType = "Q"; // OPER
             }
             else
             {
