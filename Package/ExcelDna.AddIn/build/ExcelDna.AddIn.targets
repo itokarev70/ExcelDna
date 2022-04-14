@@ -58,7 +58,7 @@
 
     <ExcelDnaPackExePath Condition="'$(ExcelDnaPackExePath)' == ''">$(ExcelDnaToolsPath)ExcelDnaPack.exe</ExcelDnaPackExePath>
     <ExcelDnaPackXllSuffix Condition="'$(ExcelDnaPackXllSuffix)' == ''">-packed</ExcelDnaPackXllSuffix>
-    <ExcelDnaPackCompressResources Condition="'$(ExcelDnaPackCompressResources)' == ''">true</ExcelDnaPackCompressResources>
+    <ExcelDnaPackCompressResources Condition="'$(ExcelDnaPackCompressResources)' == ''">false</ExcelDnaPackCompressResources>
     <ExcelDnaPackRunMultithreaded Condition="'$(ExcelDnaPackRunMultithreaded)' == ''">true</ExcelDnaPackRunMultithreaded>
   </PropertyGroup>
 
